@@ -10,60 +10,60 @@ public class StudentEntity {
     @Id
     @Column(name = "student_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long student_id;
+    private long studentId;
 
     @Column(name = "first_name")
-    private String first_name;
+    private String firstName;
 
     @Column(name = "last_name")
-    private String last_name;
+    private String lastName;
 
     @Column(name = "date_of_birth")
-    private Date date_of_birth;
+    private Date dateOfBirth;
 
-    public long getStudent_id() {
-        return student_id;
+    public long getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(long student_id) {
-        this.student_id = student_id;
+    public void setStudentId(long studentId) {
+        this.studentId = studentId;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public Date getDate_of_birth() {
-        return date_of_birth;
+    public Date getDateOfBirth() {
+        return dateOfBirth;
     }
 
-    public void setDate_of_birth(Date date_of_birth) {
-        this.date_of_birth = date_of_birth;
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public StudentEntity(long student_id, String first_name, String last_name, Date date_of_birth) {
-        this.student_id = student_id;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.date_of_birth = date_of_birth;
+    public StudentEntity(long studentId, String firstName, String lastName, Date dateOfBirth) {
+        this.studentId = studentId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
     }
 
-    public StudentEntity(String first_name, String last_name, Date date_of_birth) {
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.date_of_birth = date_of_birth;
+    public StudentEntity(String firstName, String lastName, Date dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public StudentEntity(){}
@@ -71,10 +71,10 @@ public class StudentEntity {
     @Override
     public String toString() {
         return "Student{" +
-                "student_id=" + student_id +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
-                ", date_of_birth=" + date_of_birth +
+                "student_id=" + studentId +
+                ", first_name='" + firstName + '\'' +
+                ", last_name='" + lastName + '\'' +
+                ", date_of_birth=" + dateOfBirth +
                 '}';
     }
 }

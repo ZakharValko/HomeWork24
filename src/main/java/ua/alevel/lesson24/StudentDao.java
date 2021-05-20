@@ -18,10 +18,10 @@ public class StudentDao {
     }
 
     // Поиска студента по ID
-    public StudentEntity getStudentById(int student_id){
+    public StudentEntity getStudentById(long studentId){
         Session session = sessionFactory.openSession();
-        Query query = session.createQuery("From StudentEntity WHERE student_id = :id");
-        query.setParameter("id", student_id);
+        Query query = session.createQuery("From StudentEntity WHERE studentId = :id");
+        query.setParameter("id", studentId);
         return (StudentEntity) query.getSingleResult();
     }
 
@@ -33,28 +33,25 @@ public class StudentDao {
         return newEntity;
     }
 
-    // Обновление студента по ID
-    public StudentEntity updateStudent(long student_id, StudentEntity entity){
+    // Обновление студента по I
+    public StudentEntity updateStudent(long studentId, StudentEntity entity){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("UPDATE StudentEntity SET first_name = :first_name, last_name = :last_name, date_of_birth = :date_of_birth WHERE student_id =:id");
-        query.setParameter("id", student_id);
-        query.setParameter("first_name", entity.getFirst_name());
-        query.setParameter("last_name", entity.getLast_name());
-        query.setParameter("date_of_birth", entity.getDate_of_birth());
-        query.executeUpdate();
+        entity.setStudentId(studentId);
+        session.update(entity);
         transaction.commit();
+        session.close();
         return entity;
     }
 
     // Удаление студента
-    public boolean deleteStudent(long student_id){
+    public boolean deleteStudent(long studentId){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        Query query = session.createQuery("DELETE StudentEntity WHERE student_id = :id");
-        query.setParameter("id", student_id);
-        query.executeUpdate();
+        StudentEntity entityToDelete = getStudentById(studentId);
+        session.delete(entityToDelete);
         transaction.commit();
+        session.close();
         return true;
     }
 
