@@ -33,11 +33,19 @@ public class StudentDao {
         return newEntity;
     }
 
-    // Обновление студента по I
-    public StudentEntity updateStudent(long studentId, StudentEntity entity){
+    public StudentEntity addOrUpdate(StudentEntity entity){
+        if(entity.getStudentId() == 0){
+            addStudent(entity);
+        } else {
+            updateStudent(entity);
+        }
+        return entity;
+    }
+
+    // Обновление студента по ID
+    private StudentEntity updateStudent(StudentEntity entity){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
-        entity.setStudentId(studentId);
         session.update(entity);
         transaction.commit();
         session.close();
@@ -45,7 +53,7 @@ public class StudentDao {
     }
 
     // Удаление студента
-    public boolean deleteStudent(long studentId){
+    private boolean deleteStudent(long studentId){
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
         StudentEntity entityToDelete = getStudentById(studentId);
